@@ -1,0 +1,717 @@
+package pack2;
+
+
+import java.util.*;//used to input all import library files
+import java.lang.Math;//import all mathematical function from java.lang library
+public class Scientific_Calculator {//our class
+
+    public static double Answer;
+    public static float num1;
+    public static float num2;
+
+    public static void main(String[] args) {// this is our main method
+        Scientific_Calculator obj_interface = new Scientific_Calculator();
+        obj_interface.user_interface();
+
+    }
+
+    //_____----------------------------------_____________________________-----------------------------------________________________
+
+    public static void user_interface() {// this method was used for basic user interface display site
+        System.out.println("..........................................................................instruction....................................... ");
+        System.out.println("..............................   Scientific calculator   ........you can follow user graphics commands to use ...............");
+        System.out.println(".................................................................our scientific calculator more efectively !.................");
+        System.out.println(" ");
+        System.out.println("..press: 'A' for Arthimetic    operation |   +   |    -    |   *    |     /    |  ");
+        System.out.println("..press: 'T' for Trigonometric operation |  sin  |   cos   |  tan   |   sinh   | cosh   |  tanh |  deg  | rad  |");
+        System.out.println("..press: 'L' for log AND RAD   operation |  log  |    ln   |power of|  rad(x)  | cube(x)|");
+        System.out.println("..press: 'E' for pow & Factor  operation |  n!   |c(n,r)   |p(n,r)  |");
+        System.out.println("................................................................................................................ ");
+        System.out.println(" ");
+        System.out.print("  please choose what kind of operation you need to perform from this operators:");
+
+        choose_operation();// this was function calling for input insertion
+
+
+    }
+
+//_____________________------------------------------------------------_________________________________________________________
+    public static void choose_operation() {
+
+        Scientific_Calculator obj_operation = new Scientific_Calculator();
+        Scanner input_operation = new Scanner(System.in);
+        char feed = input_operation.next().charAt(0);//this was used to input char at index 0
+        switch (feed) {
+            case 'A':
+                obj_operation.Arthematic_op();
+                break;
+            case'T':
+                trig_fun();
+                break;
+            case'L':
+                obj_operation.log_rad();
+                break;
+            case'E':
+                obj_operation.pow_factor();
+                break;
+            default:
+                System.out.println("-----------------Invalid input !  please try Again!-----------");// i need hear a clear screen
+                System.out.print("  please choose what kind of operation you need to perform from this operators:");
+                choose_operation();
+        }
+    }
+
+//____________________----------------------------------------------------------____________________________________________________-
+    public static void Arthematic_op() {//method used only for Arthimetic calculation not for dispaly
+
+        System.out.println("......................");
+        System.out.println("..Arthimetic claculator");
+        System.out.println("......................");
+        System.out.println(" 7   8   9   + ");
+        System.out.println(" 4   5   6   - ");
+        System.out.println(" 1   2   3   * ");
+        System.out.println(" 0   .   0   /  ");
+        System.out.println(".......................");
+        Scientific_Calculator obj_Arthmetic = new Scientific_Calculator();
+        Scanner input1 = new Scanner(System.in);
+        float num1=0;
+        Boolean flag;// used to continue and exit our loop cause of boolean value
+        do {          // This exeptional handling was used for handling only number values because to fix error
+
+            try// used for contains the program to monitor for exceptions
+            {
+                Scanner checkin=new Scanner(System.in);//inpur directory creation by using new key word!
+                System.out.print("Please enter  the first number : ");
+                num1 = checkin.nextFloat();      // input for the first number
+                flag=false;//exption to terminate or continue for our loop
+            }
+            catch(Exception e)// we used to catch this exception and handle it in the appropriate manner
+            {
+                System.out.println("please Enter Intiger values only!");
+                flag=true;
+            }
+
+        }
+        while(flag);
+        //...............................................................................our exeption was ended!
+
+        System.out.print("Please enter operator: ");
+        Scanner input2 = new Scanner(System.in);
+        String var = input2.nextLine();               // input for an operator
+
+        switch (var) {//we can switch inserted operator
+            //i need the clearscreen syntax for cleaning my screen
+            case "+":
+                Scanner in=new Scanner(System.in);
+                float num2=0;
+                Boolean flag2;
+                do {
+
+                    try
+                    {
+                        Scanner checkin2=new Scanner(System.in);
+                        System.out.print("Please enter  the second number : ");
+                        num2 = checkin2.nextFloat();
+                        flag2=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter only number  value:");
+                        flag2=true;
+                    }
+
+                }
+                while(flag2);
+                System.out.println("........................................................................ ");
+                System.out.println("final result= " + (num1 + num2));
+                System.out.println("........................................................................ ");
+                Arth_return();
+                break;
+            case "-":
+                float num11=0;
+                Boolean flag11;
+                do {
+
+                    try
+                    {
+                        Scanner checkin2=new Scanner(System.in);
+                        System.out.print("Please enter  the second number : ");
+                        num11 = checkin2.nextFloat();
+                        flag11=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter only number  value:");
+                        flag11=true;
+                    }
+
+                }
+                while(flag11);
+
+                System.out.println("........................................................................ ");
+                System.out.println("final result= " + (Answer=num1 - num11));
+                System.out.println("........................................................................ ");
+                Arth_return();
+
+            case "*":
+                float num3=0;
+                Boolean flag3;
+                do {
+
+                    try
+                    {
+                        Scanner checkin2=new Scanner(System.in);
+                        System.out.print("Please enter  the second number : ");
+                        num3 = checkin2.nextFloat();
+                        flag3=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter only number  value:");
+                        flag3=true;
+                    }
+
+                }
+                while(flag3);
+
+                System.out.println("........................................................................ ");
+                System.out.println("final result= " + (num1 * num3));
+                System.out.println("........................................................................ ");
+                 Arth_return();
+                break;
+            case "/":
+                float num4=0;
+                Boolean flag4;
+                do {
+
+                    try
+                    {
+                        Scanner checkin2=new Scanner(System.in);
+                        System.out.print("Please enter  the second number : ");
+                        num4 = checkin2.nextFloat();
+                        flag4=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter only number  value:");
+                        flag4=true;
+                    }
+
+                }
+                while(flag4);
+                System.out.println("........................................................................ ");
+                System.out.println("final result= " + (num1 / num4));
+                System.out.println("........................................................................ ");
+                Arth_return();
+                break;
+            default:
+                System.out.println(".....-------------,,,,,,,,,,,,,,,--------------------------");
+                System.out.println("invalid operator please try again!");
+                Arthematic_op();// calling for operator error to return back to our calculation
+                break;
+        }
+
+    }
+
+    public static void Arth_return()  //     function that used to diplay Arthematic operation
+    {
+        System.out.print(" .........................press 1:To Calculate again \n .........................press 2:To change Arthematic operation \n .........................press 3:To exit from calculator ");
+        Scanner input3 = new Scanner(System.in);
+        int option = input3.nextInt();
+//        --------------------------------------------------------------//using switch in our calculator
+        switch (option) {
+            case 1:
+                Arthematic_op();
+                break;
+            case 2:
+                user_interface();
+                break;
+            case 3:
+                System.out.println("-------------------");
+                System.out.println("------Good by!-------");
+                System.out.println("-------------------");
+                System.exit(0);
+                 break;
+            default:
+                System.out.print("Invalid number please try Again: ");
+                user_interface();
+
+        }}
+
+    public static void trig_fun()
+    {
+        System.out.println("...........................");
+        System.out.println("..Trigonometric  claculator");
+        System.out.println("...........................");
+        System.out.println(" 7   8   9     sin  ");
+        System.out.println(" 4   5   6     cos  ");
+        System.out.println(" 1   2   3     tan  ");
+        System.out.println(" 0  rad  deg   tanh ");
+        System.out.println("     sinh   cosh    ");
+        System.out.println(".......................");
+
+        Scientific_Calculator obj_Arthmetic = new Scientific_Calculator();
+        System.out.print("Please enter operator: ");
+        Scanner input1 = new Scanner(System.in);
+        String var = input1.nextLine();               // input for an operator
+//--------------------------------------------------------------// using if statment in our calculator for tri operations
+        switch(var)
+        {
+            case "sin":
+                float num1=0;
+                Boolean flag;
+                do {
+
+                    try
+                    {
+                        Scanner checkin=new Scanner(System.in);
+                        System.out.print("please enter the number:: ");
+                       num1 = checkin.nextFloat();      // input for the first number
+//                Integer.parseInt(num1);
+                        flag=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter integer value only!");
+                        flag=true;
+                    }
+
+                }
+                while(flag);
+                //--------------
+//                Double num1 = input_n.nextDouble();
+
+                Double n=Math.toRadians(num1);
+                System.out.println("sin of " + num1 + " is:" + Math.sin(n));
+                Trig_return();
+                break;
+            case "cos":
+                float n2=0;
+                Boolean flag2;
+                do {
+
+                    try
+                    {
+                        Scanner checkin=new Scanner(System.in);
+                        System.out.print("please enter the number:: ");
+                        n2 = checkin.nextFloat();      // input for the first number
+//                Integer.parseInt(num1);
+                        flag2=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter integer value only!");
+                        flag2=true;
+                    }
+
+                }
+                while(flag2);
+                //--------------
+                Double nc=Math.toRadians(n2);
+                System.out.println("cos of " + n2 + " is:" + Math.cos(nc));
+                Trig_return();
+                break;
+            case "tan":
+                float n3=0;
+                Boolean flag3;
+                do {
+
+                    try
+                    {
+                        Scanner checkin=new Scanner(System.in);
+                        System.out.print("please enter the number:: ");
+                        n3 = checkin.nextFloat();      // input for the first number
+//                Integer.parseInt(num1);
+                        flag3=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter integer value only!");
+                        flag3=true;
+                    }
+
+                }
+                while(flag3);
+                //--------------
+                Double nt=Math.toRadians(n3);
+                System.out.println("tan of " + n3 + " is:" + Math.tan(nt));
+                Trig_return();
+                break;
+
+            case "sinh":
+                float n4=0;
+                Boolean flag4;
+                do {
+
+                    try
+                    {
+                        Scanner checkin=new Scanner(System.in);
+                        System.out.print("please enter the number: ");
+                        n4 = checkin.nextFloat();      // input for the first number
+//                Integer.parseInt(num1);
+                        flag4=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter integer value only!");
+                        flag4=true;
+                    }
+
+                }
+                while(flag4);
+                //--------------
+                Double nsh=Math.toRadians(n4);
+                System.out.println("sinh of " + n4+ " is:" + Math.sinh(nsh));
+                Trig_return();
+                break;
+
+            case "cosh":
+
+                float n5=0;
+                Boolean flag5;
+                do {
+
+                    try
+                    {
+                        Scanner checkin=new Scanner(System.in);
+                        System.out.print("please enter the number:: ");
+                        n5 = checkin.nextFloat();      // input for the first number
+//                Integer.parseInt(num1);
+                        flag5=false;
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("please Enter integer value only!");
+                        flag5=true;
+                    }
+
+                }
+                while(flag5);
+                //--------------
+                Double nch=Math.toRadians(n5);
+                System.out.println("cosh of " + n5 + " is:" + Math.cosh(nch));
+                Trig_return();
+                break;
+
+            case "tanh":
+                float n6=0;
+                Boolean flag6;
+                do {
+
+                    try
+                    {
+                        Scanner checkin=new Scanner(System.in);
+                        System.out.print("please enter the number: ");
+                        n6 = checkin.nextFloat();      // input for the first number
+//                Integer.parseInt(num1);
+                        flag6=false;
+                    }
+                    catch(Exception d )
+                    {
+                        System.out.println("please Enter only integer value");
+                        flag6=true;
+                    }
+
+                }
+                while(flag6);
+                //--------------
+                Double nth=Math.toRadians(n6);
+                System.out.println("tanh of " + n6 + " is:" + Math.tanh(nth));
+                Trig_return();
+                break;
+            case "rad":
+
+                System.out.print("please enter the number in degree: ");
+                Scanner sc = new Scanner(System.in);
+                double deg=sc.nextDouble();
+                System.out.println( "degree of "+deg + " to raian is: " + Math.toRadians(deg));
+                Trig_return();
+                break;
+            case "deg":
+                System.out.print("please enter the number in radians: ");
+                Scanner sc1 = new Scanner(System.in);
+                double rad1=sc1.nextDouble();
+                System.out.println( "radian of " + rad1+"to Degree is: "+Math.toDegrees(rad1));
+                Trig_return();
+                break;
+
+            default:
+
+                System.out.println("----------------------------------------------");
+                System.out.println("--------invalid input please try again!-------");
+                trig_fun();
+                break;
+        }
+    }// final brace for trig function
+
+    public static void Trig_return()
+    {
+        System.out.print(" .........................press 1:To Calculate again \n .........................press 2:To change Arthematic operation \n .........................press 3:To exit from calculator ");
+        Scanner input3 = new Scanner(System.in);
+        int option = input3.nextInt();
+//        --------------------------------------------------------------//using switch in our calculator
+        switch (option) {
+            case 1:
+                Scientific_Calculator obj_interface2 = new Scientific_Calculator();
+                trig_fun();
+                break;
+            case 2:
+                user_interface();
+                break;
+            case 3:
+                System.out.println("-------------------");
+              System.out.println("------Good by!-------");
+                System.out.println("-------------------");
+                System.exit(0);
+                break;
+            default:
+                System.out.print("Invalid number please try Again: ");
+                user_interface();
+
+        }}
+
+    public static void log_rad()
+    {
+        System.out.println(" calling class");
+        System.out.println("...................................");
+        System.out.println("..logarithm and radical  claculator");
+        System.out.println("....................................");
+        System.out.println(" 7    8     9     log ");
+        System.out.println(" 4    5     6     ln ");
+        System.out.println(" 1    2     3     rad");
+        System.out.println(" 0    .     pow   cube");
+        System.out.println("....................................");
+        Scientific_Calculator obj_Arthmetic = new Scientific_Calculator();
+        System.out.print("Please enter operator: ");
+        Scanner input1 = new Scanner(System.in);
+        String var = input1.nextLine();               // input for an operator
+        switch (var)
+        {
+            case "log":
+                System.out.print("please enter the number: ");
+                Scanner input_n = new Scanner(System.in);
+                double num1 = input_n.nextDouble();
+//                  double n1=(-Math.log(1-num1));
+                System.out.println("---------------------------------------------------------");
+                System.out.println("common logarithm of " + num1 +  " is:" +Math.log10(num1));
+//                System.out.println("Natural logarithm of " + num1 + " is:" +Math.log(num1));
+                System.out.println("---------------------------------------------------------");
+                log_return();
+                break;
+            case"ln":
+                System.out.println("please Enter the number");
+               Scanner inp=new Scanner(System.in);
+                float lnum=inp.nextFloat();
+                System.out.println("Lan of " + lnum + " is:" +Math.log(lnum));
+                System.out.println("---------------------------------------------------------");
+                log_return();
+                break;
+            case"rad"://radical
+                System.out.print("please enter the number: ");
+                Scanner input_nrad = new Scanner(System.in);
+                num1 = input_nrad.nextFloat();
+                System.out.println("square root of " + num1 + " is:" + Math.sqrt(num1));
+                System.out.println("---------------------------------------------------------");
+                log_return();
+                break;
+            case"cube":
+                System.out.print("please enter the number: ");
+                Scanner input_ncube = new Scanner(System.in);
+                num1 = input_ncube.nextFloat();
+                System.out.println("cube root of " + num1 + " is:" + Math.cbrt(num1));
+                System.out.println("---------------------------------------------------------");
+                log_return();
+                break;
+            case"pow":
+                System.out.print("please enter the base number: ");
+                Scanner input_npow = new Scanner(System.in);
+                num1 = input_npow.nextFloat();
+                System.out.print("please enter the exponent number: ");
+                num2=input_npow.nextFloat();
+                System.out.println("----------------------------------------------------------------------");
+                System.out.println("Result of " + num1 + " power of: "+num2+" is :" + Math.pow(num1,num2));
+                System.out.println("----------------------------------------------------------------------");
+                log_return();
+                break;
+            default:
+                System.out.println(".....-------------,,,,,,,,,,,,,,,--------------------------");
+                System.out.println("invalid number please try again!");
+                log_rad();
+                break;
+//                how to call objects for rolling back purpose!
+        }
+    }
+
+    public static void log_return()
+    {
+        System.out.print(" .........................press 1:To Calculate again \n .........................press 2:To change Arthematic operation \n .........................press 3:To exit from calculator ");
+        Scanner input3 = new Scanner(System.in);
+        int option = input3.nextInt();
+//        --------------------------------------------------------------//using switch in our calculator
+        switch (option) {
+            case 1:
+                log_rad();
+                break;
+            case 2:
+                user_interface();
+                break;
+            case 3:
+                System.out.println("-------------------");
+                System.out.println("------Good by!-------");
+                System.out.println("-------------------");
+                System.exit(0);
+            default:
+                System.out.print("Invalid number please try Again: ");
+                user_interface();
+        }
+    }
+
+    public static void pow_factor()
+    {
+        System.out.println("...........................................");
+        System.out.println(".....[power] & [factorial] calculator......");
+        System.out.println("...........................................");
+        System.out.println(" 7   8   9   n!");
+        System.out.println(" 4   5   6   perm");
+        System.out.println(" 1   2   3   comb");
+        System.out.println(" 0   .   0    ");
+        System.out.println(".......................");
+
+        Scientific_Calculator obj_Arthmetic = new Scientific_Calculator();
+        System.out.print("Please enter operator: ");
+        Scanner input1 = new Scanner(System.in);
+        String var = input1.nextLine();               // input for an operator
+
+        switch (var) {
+            case "n!":
+                long num;
+                long factorial;
+
+                Scanner bf = new Scanner(System.in);
+
+                //input an integer number
+                System.out.print("Enter any integer number: ");
+                num = bf.nextInt();
+
+                //find factorial
+                factorial = 1;
+                for (long loop = num; loop >= 1; loop--)
+                    factorial *= loop;
+
+                System.out.println("Factorial of " + num + " is: " + factorial);
+                pow_fac_return();
+                break;
+            case "perm": {
+                System.out.print("please enter n: ");
+                Scanner input_nrad = new Scanner(System.in);
+                int n = input_nrad.nextInt();
+                // we need to calculate the n factorial
+
+                System.out.print("please enter r: ");
+                int r = input_nrad.nextInt();
+                int x = n - r;
+                long p;
+                long fac_n;
+                fac_n = 1;
+
+                for (int loop = n; loop >= 1; loop--) {
+                    fac_n *= loop;
+                }
+//              System.out.println("factorial of"+n+ "is"+ fac_n);
+
+                long fac_n_r;
+                fac_n_r = 1;
+                for (int loop = x; loop >= 1; loop--) {
+                    fac_n_r *= loop;
+                }
+//              System.out.println("factorial of"+r+ "is"+ fac_n_r);
+
+                System.out.println("permutation of " + n + " and " + r + " is: " + fac_n / fac_n_r);
+            }
+            pow_fac_return();
+            break;
+            case "comb": {
+                System.out.print("please enter n: ");
+                Scanner input_nrad = new Scanner(System.in);
+                int n = input_nrad.nextInt();
+                // we need to calculate the n factorial
+
+                System.out.print("please enter r: ");
+                int r = input_nrad.nextInt();
+                int x = n - r;
+                long p;
+                long fac_n;
+                fac_n = 1;
+// factorial for n!
+                for (int loop = n; loop >= 1; loop--) {
+                    fac_n *= loop;
+                }
+//              System.out.println("factorial of"+n+ "is"+ fac_n);
+//factorial for r!
+                long fac_n_r;
+                fac_n_r = 1;
+                for (int loop = x; loop >= 1; loop--) {
+                    fac_n_r *= loop;
+                }
+//              System.out.println("factorial of"+r+ "is"+ fac_n_r);
+// for r factorial
+                long rfac;
+                rfac = 1;
+                for (int loop = r; loop >= 1; loop--) {
+                    rfac *= loop;
+                }
+                double result = fac_n / fac_n_r;
+
+                System.out.println("combination of " + n + " and " + r + " is: " + result / rfac);
+                pow_fac_return();
+                break;
+
+            }
+
+        }// brace for switch
+    }
+    public static void pow_fac_return()
+    {
+        System.out.print(" .........................press 1:To Calculate again \n .........................press 2:To change Arthematic operation \n .........................press 3:To exit from calculator ");
+        Scanner input3 = new Scanner(System.in);
+        int option = input3.nextInt();
+//        --------------------------------------------------------------//using switch in our calculator
+        switch (option) {
+            case 1:
+                pow_factor();
+                break;
+            case 2:
+                user_interface();
+                break;
+            case 3:
+                System.out.println("-------------------");
+                System.out.println("------Good by!-------");
+                System.out.println("-------------------");
+                System.exit(0);
+                break;
+            default:
+                System.out.print("Invalid number please try Again: ");
+                user_interface();
+        }
+    }
+
+}// clas switch brace
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
