@@ -1,1 +1,1 @@
-# Scientific_calculator Java
+ Java operations 
